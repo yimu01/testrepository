@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="e6e6f7ac-ef3c-4190-97a9-9f3acbaa924d" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="test-repositoryFlow" doc:id="52e35f03-2289-4b51-bb63-570d1fabfd58" >
+		<http:listener doc:name="Listener" doc:id="75a1f8cd-cee2-4515-af65-dd3fd38a5d34" path="/repo" config-ref="HTTP_Listener_config"/>
+		<set-payload value="#['first time to put project on github']" doc:name="Set Payload" doc:id="8126e15c-5cf3-4fce-b872-c7b3cfd6b95d" />
+		<logger level="INFO" doc:name="Logger" doc:id="d35ddd3a-a04b-41ec-8a6f-fe56ece64759" message="paylod"/>
+	</flow>
+</mule>
